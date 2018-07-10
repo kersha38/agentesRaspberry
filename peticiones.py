@@ -9,13 +9,14 @@ def obtener_mac(interface='eth0'):
 
 raspberry=str(obtener_mac())
 
-direccion_base = 'https://tranquil-mountain-87492.herokuapp.com/'
+#direccion_base = 'https://tranquil-mountain-87492.herokuapp.com/'
+direccion_base = 'http://192.168.5.10:300/'
 
 def consultar_orden():
     orden_actual = requests.get(direccion_base + 'Raspberry/obtenerOrden?raspberry=' + raspberry)
 
     try:
-        return (orden_actual.json())
+        return (orden_actual.json()["tipo"])
     except:
         return ("sin orden")
 
@@ -33,5 +34,8 @@ def subirArchivo():
                           +'Raspberry/subirVideo',
                           files={'file': file})
 
+def publicarRaspberry():
+    requests.get(direccion_base+'Raspberry/publicarRaspberry?raspberry='+raspberry)
 
-
+def publicarIP():
+    requests.get(direccion_base+'Raspberry/publicarIP?raspberry='+raspberry)

@@ -2,6 +2,7 @@ import threading
 import peticiones
 import actuador
 import sensor
+import RPi.GPIO as GPIO
 
 def empezar_hilos(arr_hilos):
     for hilo in arr_hilos:
@@ -19,13 +20,12 @@ def sensar():
         while True:
             senso = '{agua:\'' + sensor.hay_agua() \
                     + "\',comida:\'" + sensor.hay_comida() \
-                    + "\',luz:\'" + sensor.estado_luz() + '\'}'
+                    + "\',luz:\'" +sensor.estado_luz() + '\'}'
             peticiones.actualizar_senso(senso)
     finally:
         sensor.finalizar_sensores()
 
 def realizar_orden(orden):
-    print ("hago algo" + str(orden))
     if orden == "agua":
         actuador.abrir_agua()
     elif orden == "comida":
@@ -34,8 +34,14 @@ def realizar_orden(orden):
         actuador.encender_luz()
     elif orden == "luzOFF":
         actuador.apagar_luz()
-
+    else:
+        print("ninguna orden")
+        
+GPIO.cleanup()
+GPIO.setmode(GPIO.BOARD)
 hilos = []
+peticiones.publicarRaspberry()
+peticiones.publicarIP()
 sensor.iniciar_sensores()
 actuador.iniciar_actuadores()
 hilo_actuar = threading.Thread(target=actuar, args=())
