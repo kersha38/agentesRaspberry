@@ -3,6 +3,7 @@ import peticiones
 import actuador
 import sensor
 import RPi.GPIO as GPIO
+import time
 
 def empezar_hilos(arr_hilos):
     for hilo in arr_hilos:
@@ -12,6 +13,7 @@ def actuar():
     try:
         while True:
             realizar_orden(peticiones.consultar_orden())
+            #time.sleep(1)
     finally:
         actuador.finalizar_actuadores()
 
@@ -22,6 +24,7 @@ def sensar():
                     + "\',comida:\'" + sensor.hay_comida() \
                     + "\',luz:\'" +sensor.estado_luz() + '\'}'
             peticiones.actualizar_senso(senso)
+            #time.sleep(1)
     finally:
         sensor.finalizar_sensores()
 

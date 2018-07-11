@@ -9,16 +9,16 @@ def iniciar_sensores():
     # GPIO.setmode(GPIO.BCM)
 
 def hay_agua():
-    return "SIagua"
+    return "SI"
 
 def hay_comida():
-    return "NOcomida"
+    return "NO"
 
 def estado_luz():
     if(GPIO.input(idSensorLuz)):
-        return "prendido"
+        return "SI"
     else:
-        return "apagao"
+        return "NO"
 
 
 def finalizar_sensores():

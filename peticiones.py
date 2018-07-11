@@ -10,7 +10,7 @@ def obtener_mac(interface='eth0'):
 raspberry=str(obtener_mac())
 
 #direccion_base = 'https://tranquil-mountain-87492.herokuapp.com/'
-direccion_base = 'http://192.168.5.10:300/'
+direccion_base = 'http://172.29.64.110:300/'
 
 def consultar_orden():
     orden_actual = requests.get(direccion_base + 'Raspberry/obtenerOrden?raspberry=' + raspberry)
