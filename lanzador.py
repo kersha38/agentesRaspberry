@@ -30,17 +30,19 @@ def sensar():
 
 def realizar_orden(orden):
     if orden == "agua":
-        actuador.abrir_agua()
+        actuador.abrir_agua(peticiones.getTiempoAgua())
     elif orden == "comida":
-        actuador.abrir_comida()
+        actuador.abrir_comida(peticiones.getTiempoComida())
     elif orden == "luzON":
         actuador.encender_luz()
     elif orden == "luzOFF":
         actuador.apagar_luz()
+    elif orden == "actualizarConfiguracion":
+        peticiones.actualizarConfiguracion()
     else:
         print("ninguna orden")
-        
-GPIO.cleanup()
+
+#GPIO.cleanup()
 GPIO.setmode(GPIO.BOARD)
 hilos = []
 peticiones.publicarRaspberry()

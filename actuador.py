@@ -15,16 +15,16 @@ def iniciar_actuadores():
     rotador_servo= GPIO.PWM(idServo, 50)
     rotador_servo.start(7.5)
 
-def abrir_agua():
+def abrir_agua(tiempoAgua):
     print("sirviendo agua")
     rotador_servo.ChangeDutyCycle(4.5)
-    time.sleep(3)
+    time.sleep(tiempoAgua)
     rotador_servo.ChangeDutyCycle(7.5)
 
-def abrir_comida():
+def abrir_comida(tiempoComida):
     print("sirviendo comida")
     rotador_servo.ChangeDutyCycle(10.5)
-    time.sleep(3)
+    time.sleep(tiempoComida)
     rotador_servo.ChangeDutyCycle(7.5)
 
 def encender_luz():
