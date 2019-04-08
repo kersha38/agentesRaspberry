@@ -9,7 +9,7 @@ rotador_servo=1
 def iniciar_actuadores():
     print ("inicializando actuadores")
 #    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(idServo,GPIO.OUT)
+    GPIO.setup(idServo, GPIO.OUT)
     GPIO.setup(idLed, GPIO.OUT)
     global rotador_servo
     rotador_servo= GPIO.PWM(idServo, 50)
