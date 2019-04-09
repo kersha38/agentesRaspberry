@@ -6,12 +6,9 @@ class Actuador:
     def __init__(self):
         print('inicializando actuadores')
         self.idServo = 35
-        self.idLed = 40
-        self.luz = False
         self.rotador_servo = 1
-        #    GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.idServo, GPIO.OUT)
-        GPIO.setup(self.idLed, GPIO.OUT)
         self.rotador_servo = GPIO.PWM(self.idServo, 50)
         self.rotador_servo.start(7.5)
 
@@ -27,27 +24,8 @@ class Actuador:
         time.sleep(tiempoComida)
         self.rotador_servo.ChangeDutyCycle(7.5)
 
-    def encender_luz(self):
-        print("luz encendida")
-        GPIO.output(self.idLed, GPIO.HIGH)
-        global luz
-        luz = True
-
-    def apagar_luz(self):
-        print("luz apagada")
-        GPIO.output(self.idLed, GPIO.LOW)
-        global luz
-        luz = False
-
-    def valor_luz(self):
-        if luz:
-            return "luz encendida"
-        else:
-            return "luz apagada"
-
     def finalizar_actuadores(self):
         print("finalizar actuadores")
         self.rotador_servo
         self.rotador_servo.stop()
-        GPIO.cleanup(self.idLed)
         GPIO.cleanup(self.idServo)
