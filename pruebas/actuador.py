@@ -10,13 +10,13 @@ class Actuador:
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.idServo, GPIO.OUT)
         self.rotador_servo = GPIO.PWM(self.idServo, 50)
-        self.rotador_servo.start(7.5)
+        self.rotador_servo.start(10.5)
 
     def abrir_agua(self):
         print("sirviendo agua")
         self.rotador_servo.ChangeDutyCycle(4.5)
         time.sleep(1)
-        self.rotador_servo.ChangeDutyCycle(7.5)
+        self.rotador_servo.ChangeDutyCycle(10.5)
 
     def abrir_comida(self):
         print("sirviendo comida")
