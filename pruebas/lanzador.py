@@ -9,6 +9,6 @@ actuador = Actuador()
 try:
     while True:
         actuador.abrir_agua()
-        time.sleep(2)
+        time.sleep(10)
 finally:
     actuador.finalizar_actuadores()
