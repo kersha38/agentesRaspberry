@@ -1,5 +1,5 @@
 import threading
-from pruebas.actuador import *
+from actuador import *
 import RPi.GPIO as GPIO
 import time
 
