@@ -12,13 +12,18 @@ class Actuador:
         self.rotador_servo = GPIO.PWM(self.idServo, 50)
         self.rotador_servo.start(10)
 
+    def calmar_servo(self):
+        time.sleep(1)
+        self.rotador_servo.ChangeDutyCycle(0)
+
     def abrir_agua(self):
         print("sirviendo agua")
         self.rotador_servo.ChangeDutyCycle(5)
+        self.calmar_servo()
         time.sleep(3)
         self.rotador_servo.ChangeDutyCycle(10)
-        time.sleep(1)
-        self.rotador_servo.ChangeDutyCycle(0)
+        self.calmar_servo()
+
 
     def abrir_comida(self):
         print("sirviendo comida")
