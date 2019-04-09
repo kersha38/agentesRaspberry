@@ -22,7 +22,9 @@ def sensar():
         while True:
             senso = '{agua:\'' + sensor.hay_agua() \
                     + "\',comida:\'" + sensor.hay_comida() \
-                    + "\',luz:\'" +sensor.estado_luz() + '\'}'
+                    + "\',luz:\'" + sensor.estado_luz() \
+                    + "\',fecha:\'"+ sensor.obtenerFecha() \
+                    + "\',hora:\'" + sensor.obtenerHora()+ "\'}"
             peticiones.actualizar_senso(senso)
             #time.sleep(1)
     finally:

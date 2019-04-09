@@ -12,7 +12,7 @@ def iniciar_sensores():
     GPIO.setup(idSensorAgua,GPIO.IN,pull_up_down=GPIO.PUD_DOWN)
 
 def hay_agua():
-    if(GPIO.inpu(idSensorAgua)):
+    if(GPIO.input(idSensorAgua)):
         return "SI"
     else:
         return "NO"
