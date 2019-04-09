@@ -16,7 +16,7 @@ class Actuador:
         print("sirviendo agua")
         self.rotador_servo.ChangeDutyCycle(4.5)
         time.sleep(3)
-        self.rotador_servo.ChangeDutyCycle(4.5)
+        self.rotador_servo.ChangeDutyCycle(0)
         time.sleep(3)
         self.rotador_servo.ChangeDutyCycle(10.5)
 
