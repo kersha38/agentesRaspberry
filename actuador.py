@@ -1,19 +1,21 @@
 import RPi.GPIO as GPIO
 import time
 
-idServo=35
-idLed=40
+idServo = 35
+idLed = 40
 luz = False
-rotador_servo=1
+rotador_servo = 1
+
 
 def iniciar_actuadores():
-    print ("inicializando actuadores")
-#    GPIO.setmode(GPIO.BOARD)
+    print('inicializando actuadores')
+    #    GPIO.setmode(GPIO.BOARD)
     GPIO.setup(idServo, GPIO.OUT)
     GPIO.setup(idLed, GPIO.OUT)
     global rotador_servo
-    rotador_servo= GPIO.PWM(idServo, 50)
+    rotador_servo = GPIO.PWM(idServo, 50)
     rotador_servo.start(7.5)
+
 
 def abrir_agua(tiempoAgua):
     print("sirviendo agua")
@@ -21,29 +23,34 @@ def abrir_agua(tiempoAgua):
     time.sleep(tiempoAgua)
     rotador_servo.ChangeDutyCycle(7.5)
 
+
 def abrir_comida(tiempoComida):
     print("sirviendo comida")
     rotador_servo.ChangeDutyCycle(10.5)
     time.sleep(tiempoComida)
     rotador_servo.ChangeDutyCycle(7.5)
 
+
 def encender_luz():
     print("luz encendida")
-    GPIO.output(idLed,GPIO.HIGH)
+    GPIO.output(idLed, GPIO.HIGH)
     global luz
-    luz=True
+    luz = True
+
 
 def apagar_luz():
-    print ("luz apagada")
+    print("luz apagada")
     GPIO.output(idLed, GPIO.LOW)
     global luz
-    luz=False
+    luz = False
+
 
 def valor_luz():
-    if (luz):
+    if luz:
         return "luz encendida"
     else:
         return "luz apagada"
+
 
 def finalizar_actuadores():
     print("finalizar actuadores")
@@ -51,4 +58,3 @@ def finalizar_actuadores():
     rotador_servo.stop()
     GPIO.cleanup(idLed)
     GPIO.cleanup(idServo)
-
