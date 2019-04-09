@@ -17,6 +17,8 @@ class Actuador:
         self.rotador_servo.ChangeDutyCycle(5)
         time.sleep(3)
         self.rotador_servo.ChangeDutyCycle(10)
+        time.sleep(1)
+        self.rotador_servo.ChangeDutyCycle(0)
 
     def abrir_comida(self):
         print("sirviendo comida")
