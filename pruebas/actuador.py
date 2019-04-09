@@ -15,13 +15,13 @@ class Actuador:
     def abrir_agua(self, tiempoAgua):
         print("sirviendo agua")
         self.rotador_servo.ChangeDutyCycle(4.5)
-        time.sleep(tiempoAgua)
+        time.sleep(1)
         self.rotador_servo.ChangeDutyCycle(7.5)
 
     def abrir_comida(self, tiempoComida):
         print("sirviendo comida")
         self.rotador_servo.ChangeDutyCycle(10.5)
-        time.sleep(tiempoComida)
+        time.sleep(1)
         self.rotador_servo.ChangeDutyCycle(7.5)
 
     def finalizar_actuadores(self):
